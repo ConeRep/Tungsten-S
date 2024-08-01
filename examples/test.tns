@@ -1,5 +1,0 @@
-15 20 > IF
-    TRUE ;
-ELSE
-    FALSE ;
-END

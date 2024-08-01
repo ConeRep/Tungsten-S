@@ -12,6 +12,7 @@ pub enum Operations {
     Else,
     End,
     While,
+    Loop,
     Do,
     Dupl,
     Mem,

@@ -124,6 +124,8 @@ fn simulate_program(mut program: Vec<(Operations, i64)>) {
             ip = op.1 as usize;
         } else if op.0 == Operations::While {
             ip += 1;
+        } else if op.0 == Operations::Loop {
+            ip = 0;
         } else if op.0 == Operations::Do {
             let a = stack.pop().unwrap();
             if a == 0 {
@@ -254,6 +256,9 @@ fn compile_program(program: Vec<(Operations, i64)>, output_path: String) {
             }
         } else if op.0 == Operations::While {
             output.write("    ;; ----- WHILE ----- ;;\n".as_bytes());
+        } else if op.0 == Operations::Loop {
+            output.write("    ;; ----- LOOP ----- ;;\n".as_bytes());
+            output.write("    jmp addr_0\n".as_bytes());
         } else if op.0 == Operations::Do {
             output.write("    ;; ----- DO ----- ;;\n".as_bytes());
             output.write("    pop rax\n".as_bytes());
@@ -308,6 +313,8 @@ fn parse_token(row: usize, col: usize, word: String, file_path: String) -> (Oper
 		return (Operations::End, 0);
     } else if word == "WHILE" {
 		return (Operations::While, 0);
+    } else if word == "LOOP" {
+        return (Operations::Loop, 0);
 	} else if word == "DO" {
 		return (Operations::Do, 0);
     } else if word == "DUPL" {
