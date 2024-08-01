@@ -1,0 +1,7 @@
+10
+// While loop that counts down from 10 - 1
+WHILE DUPL 0 > DO
+    DUPL ;
+    1 -
+END
+6464 ;
