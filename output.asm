@@ -38,9 +38,20 @@ global _start
 
 _start:
 addr_0:
-    ;; ----- MEM ----- ;;
-    push mem
+    ;; ----- PUSH ----- ;;
+    push 3
 addr_1:
+    ;; ----- PUSH ----- ;;
+    push 2
+addr_2:
+    ;; ----- EQUAL ----- ;;    mov rcx, 0
+    mov rdx, 1
+    pop rax
+    pop rbx
+    cmp rax, rbx
+    cmove rcx, rdx
+    push rcx
+addr_3:
     ;; ----- DUMP ----- ;;
     pop rdi
     call dump

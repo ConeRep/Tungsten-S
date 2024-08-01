@@ -290,7 +290,7 @@ fn parse_token(row: usize, col: usize, word: String, file_path: String) -> (Oper
         return (Operations::Plus, 0);
     } else if word == "-" {
         return (Operations::Minus, 0);
-    } else if word == ";" {
+    } else if word == "DUMP" {
         return (Operations::Dump, 0);
 	} else if word == "=?" {
 		return (Operations::Equal, 0);
